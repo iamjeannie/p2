@@ -21,7 +21,7 @@
 	<form role="form" method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">How many words do you want in your password ? </label>
-		    <input type="text" class="form-control" name="no_of_words" placeholder="Please enter number maximum number of <?php echo NO_OF_WORDS ?>">
+		    <input type="text" class="form-control" name="no_of_words" placeholder="Please enter number maximum number of <?php echo MAX_WORDS ?>">
 		  </div>
 		  <div class="checkbox0">
 		  	<label><input type="checkbox"> Include number </label>
@@ -46,17 +46,28 @@
 
 <p><?php echo NO_OF_WORDS; ?></p>
 
-<p><?php 	$file = fopen(CSV_LOCATION,"r");
+So Here's your result , enjoy :-)   => <mark><?php echo NO_OF_WORDS; ?></mark>
+
+<p><?php 
+	$allwords = [];
+	$allwords = getCSVwords(CSV_LOCATION);
+	// print_r($allwords);
+	$selected = getRandomWords($allwords);
+	echo "Here is index = " . print_r($selected);
+ ?>
+ </p>
+
+<!-- <p><?php 	$file = fopen(CSV_LOCATION,"r");
 			$allwords = [];
 
 		while(!feof($file)) {
 			array_push($allwords,fgetcsv($file)[0]);
 		}
-		print_r($allwords);
+		print_r($allwords[17]);
 		fclose($file);
 	?>
-</p>
-
+</p> -->
+<!-- 
 <p><?php echo CONSTANT_NAME; ?></p>
 <p><?php echo $_SERVER["PHP_SELF"] ?></p>
 <form method="POST" action="/index.php">>
@@ -64,7 +75,7 @@
 </form>
 <p> below is from session </p>
 
-<p>view this by using the $_GET method, passing value from URL by clicking <a href="/get.php">Here</a>.</p>
+<p>view this by using the $_GET method, passing value from URL by clicking <a href="/get.php">Here</a>.</p> -->
 
   <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
 </body>
