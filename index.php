@@ -79,7 +79,7 @@ Your xkcd password result from  <?php echo NO_OF_WORDS; ?>  selected words  is :
 <br><br/>
 
 <p><?php 
-	$allwords = [];
+	$allwords = array();
 	$allwords = getCSVwords(CSV_LOCATION);
 	$allwords = array_map('strtolower', $allwords);
 	if(CHECK_FIRSTLETTER == "Yes"){
