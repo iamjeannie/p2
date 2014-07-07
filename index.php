@@ -1,8 +1,4 @@
 
-
-
-
-
 <?php session_start(); ?>
 <?php require './constants.php' ;?>
 <?php require './functions.php' ;?>
@@ -24,7 +20,7 @@
 	<form role="form" method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">How many words do you want in your password ? </label>
-		    <input type="text" class="form-control" name="no_of_words" placeholder="Please enter number maximum number of <?php echo MAX_WORDS ?>">
+		    <input type="text" class="form-control" name="no_of_words" placeholder="Please enter a number here">
 		  </div>
 		  <div class="checkbox0">
 		  	<label><input type="checkbox" name="check_number" value = "Yes"> Append some random number between 1 - 99</label>
@@ -63,7 +59,7 @@
 		  </div>
 		  <br><br/>
 		  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-		  <button type="submit" class="btn btn-default btn-lg">Clear</button>
+		  <button type="submit" class="btn btn-default btn-lg" name="clear" value="Yes">Clear</button>
 		  <br><br/>
 <!-- 		  <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button><br/>
 		  <button type="button" class="btn btn-default btn-lg btn-block">Clear</button> -->
@@ -80,7 +76,12 @@ Your xkcd password result from  <?php echo NO_OF_WORDS; ?>  selected words  is :
 
 <p><?php 
 	$allwords = array();
-	$allwords = getCSVwords(CSV_LOCATION);
+	if(CLEAR == "Yes"){
+		$allwords = array();
+	}
+	else{
+		$allwords = getCSVwords(CSV_LOCATION);
+	}
 	$allwords = array_map('strtolower', $allwords);
 	if(CHECK_FIRSTLETTER == "Yes"){
 		$allwords = array_map('ucfirst', $allwords);
@@ -89,7 +90,7 @@ Your xkcd password result from  <?php echo NO_OF_WORDS; ?>  selected words  is :
 	$selected = getRandomWords($allwords); 
 	?>
 	<div class = "result">
-	<p class="bg-success">
+	<!-- <p class="bg-success"> -->
 	<?php
 	echo "<mark>".$selected[0]."</mark>";
 	for ($col = 1; $col <  NO_OF_WORDS; $col++) {
@@ -100,7 +101,7 @@ Your xkcd password result from  <?php echo NO_OF_WORDS; ?>  selected words  is :
    }
    
 	?>
-	</p>
+	<!-- </p> -->
 	</div>
  </p>
   <br><br/>

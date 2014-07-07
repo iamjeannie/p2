@@ -1,0 +1,8 @@
+.result {
+    text-align:center;
+    color:gray;
+    background-color:BlanchedAlmond;
+    border: 2px solid;
+    border-radius: 25px;
+    font-weight:bold;
+}

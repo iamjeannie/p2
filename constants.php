@@ -17,6 +17,12 @@
 		define(CHECK_NUMBER,"No");
 	}
 
+	if($_POST["clear"]) {
+		define(CLEAR,$_POST["clear"]);		
+	} else {
+		define(CLEAR,"No");
+	}
+
 	if($_POST["check_firstletter"]) {
 		define(CHECK_FIRSTLETTER,$_POST["check_firstletter"]);		
 	} else {
