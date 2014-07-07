@@ -24,13 +24,39 @@
 		    <input type="text" class="form-control" name="no_of_words" placeholder="Please enter number maximum number of <?php echo MAX_WORDS ?>">
 		  </div>
 		  <div class="checkbox0">
-		  	<label><input type="checkbox"> Include number </label>
+		  	<label><input type="checkbox" name="check_number"> Include number </label>
 		  </div>
 		  <div class="checkbox1">
-		  	<label><input type="checkbox"> Special symbol</label>
+		    <label><input type="checkbox" name="check_firstletter"> UpperCase first letter</label>
 		  </div>
-		  <div class="checkbox2">
-		    <label><input type="checkbox"> UpperCase first letter</label>
+		  <div class="radio">
+		  <label class="radio-inline" >
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="-" checked> -
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="@"> @
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="#"> #
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="/"> /
+		</label>
+				<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="?"> ?
+		</label>
+				<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="+"> +
+		</label>
+				<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="%"> %
+		</label>
+				<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="^"> ^
+		</label>
+				<label class="radio-inline">
+		  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="!"> !
+		</label>
 		  </div>
 		  <br><br/>
 		  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
@@ -44,38 +70,26 @@
 
 <div>
 
-<p><?php echo NO_OF_WORDS; ?></p>
 
-So Here's your result , enjoy :-)   => <mark><?php echo NO_OF_WORDS; ?></mark>
+
+Your xkcd password result from  <?php echo NO_OF_WORDS; ?>  selected words  is : 
+<br><br/>
 
 <p><?php 
 	$allwords = [];
 	$allwords = getCSVwords(CSV_LOCATION);
+	$allwords = array_map('strtolower', $allwords);
 	// print_r($allwords);
 	$selected = getRandomWords($allwords);
-	echo "Here is index = " . print_r($selected);
+	echo "<mark>".$selected[0]."</mark>";
+	for ($col = 1; $col <  NO_OF_WORDS; $col++) {
+    	echo  "<mark>".RADIO_SYMBOL.$selected[$col]." </mark>";
+   }
  ?>
  </p>
+  <br><br/>
+<?php echo CHECK_NUMBER ?>
 
-<!-- <p><?php 	$file = fopen(CSV_LOCATION,"r");
-			$allwords = [];
-
-		while(!feof($file)) {
-			array_push($allwords,fgetcsv($file)[0]);
-		}
-		print_r($allwords[17]);
-		fclose($file);
-	?>
-</p> -->
-<!-- 
-<p><?php echo CONSTANT_NAME; ?></p>
-<p><?php echo $_SERVER["PHP_SELF"] ?></p>
-<form method="POST" action="/index.php">>
-	<input type="submit" test submit>
-</form>
-<p> below is from session </p>
-
-<p>view this by using the $_GET method, passing value from URL by clicking <a href="/get.php">Here</a>.</p> -->
 
   <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
 </body>
