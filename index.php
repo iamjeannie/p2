@@ -1,5 +1,8 @@
 
 
+
+
+
 <?php session_start(); ?>
 <?php require './constants.php' ;?>
 <?php require './functions.php' ;?>
@@ -24,10 +27,10 @@
 		    <input type="text" class="form-control" name="no_of_words" placeholder="Please enter number maximum number of <?php echo MAX_WORDS ?>">
 		  </div>
 		  <div class="checkbox0">
-		  	<label><input type="checkbox" name="check_number"> Include number </label>
+		  	<label><input type="checkbox" name="check_number" value = "Yes"> Append some random number between 1 - 99</label>
 		  </div>
 		  <div class="checkbox1">
-		    <label><input type="checkbox" name="check_firstletter"> UpperCase first letter</label>
+		    <label><input type="checkbox" name="check_firstletter" value = "Yes"> UpperCase first letter on every word</label>
 		  </div>
 		  <div class="radio">
 		  <label class="radio-inline" >
@@ -79,16 +82,29 @@ Your xkcd password result from  <?php echo NO_OF_WORDS; ?>  selected words  is :
 	$allwords = [];
 	$allwords = getCSVwords(CSV_LOCATION);
 	$allwords = array_map('strtolower', $allwords);
+	if(CHECK_FIRSTLETTER == "Yes"){
+		$allwords = array_map('ucfirst', $allwords);
+	}
 	// print_r($allwords);
-	$selected = getRandomWords($allwords);
+	$selected = getRandomWords($allwords); 
+	?>
+	<div class = "result">
+	<p class="bg-success">
+	<?php
 	echo "<mark>".$selected[0]."</mark>";
 	for ($col = 1; $col <  NO_OF_WORDS; $col++) {
-    	echo  "<mark>".RADIO_SYMBOL.$selected[$col]." </mark>";
+    	echo  "<mark>".RADIO_SYMBOL." ".$selected[$col]." </mark>";
    }
- ?>
+   if(CHECK_NUMBER == "Yes"){
+   	echo "<mark>".RANDNUMBER."</mark>";
+   }
+   
+	?>
+	</p>
+	</div>
  </p>
   <br><br/>
-<?php echo CHECK_NUMBER ?>
+
 
 
   <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
