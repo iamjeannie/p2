@@ -1,4 +1,4 @@
-<?php echo 'Current PHP version: ' . phpversion(); ?>
+
 
 <?php session_start(); ?>
 <?php require './constants.php' ;?>
