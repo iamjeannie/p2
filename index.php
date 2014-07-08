@@ -1,3 +1,4 @@
+<?php echo 'Current PHP version: ' . phpversion(); ?>
 
 <?php session_start(); ?>
 <?php require './constants.php' ;?>
@@ -61,8 +62,6 @@
 		  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
 		  <button type="submit" class="btn btn-default btn-lg" name="clear" value="Yes">Clear</button>
 		  <br><br/>
-<!-- 		  <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button><br/>
-		  <button type="button" class="btn btn-default btn-lg btn-block">Clear</button> -->
 	</form>
 
 
@@ -86,11 +85,11 @@ Your xkcd password result from  <?php echo NO_OF_WORDS; ?>  selected words  is :
 	if(CHECK_FIRSTLETTER == "Yes"){
 		$allwords = array_map('ucfirst', $allwords);
 	}
-	// print_r($allwords);
+
 	$selected = getRandomWords($allwords); 
 	?>
 	<div class = "result">
-	<!-- <p class="bg-success"> -->
+
 	<?php
 	echo "<mark>".$selected[0]."</mark>";
 	for ($col = 1; $col <  NO_OF_WORDS; $col++) {
@@ -101,7 +100,7 @@ Your xkcd password result from  <?php echo NO_OF_WORDS; ?>  selected words  is :
    }
    
 	?>
-	<!-- </p> -->
+
 	</div>
  </p>
   <br><br/>

@@ -2,7 +2,13 @@
 
 	
 	function getCSVwords($path) {
-
+		/*
+		objective : to read csv from a file
+		parameter : 
+			$path : name of the csv e.i "./words.csv"
+		return 	: 
+			$allwords : array of words
+		*/
 			$file = fopen($path,"r");
 			$allwords = array();
 
@@ -15,7 +21,15 @@
 	
 	
 	function getRandomWords($allwords) {			
-
+		/*
+		objective : to read csv from a file
+		parameter : 
+			$allwords : array of words
+		constant : 
+			NO_OF_WORDS : number of words want to select
+		return :
+			$selectedwords : 
+		*/
 		$selectedwords = array();
 		for($i=0;$i<NO_OF_WORDS;$i++) {
 
